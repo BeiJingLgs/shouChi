@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <RelativeLayout
+            android:paddingTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <CheckBox
+                android:id="@+id/one1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                style="@style/text"
+                android:text="周转箱、复核人" />
+
+            <CheckBox
+                android:id="@+id/two2"
+                android:layout_below="@id/one1"
+                android:layout_marginTop="20dp"
+                android:checked="true"
+                android:layout_width="wrap_content"
+                android:layout_alignLeft="@id/one1"
+                android:layout_height="wrap_content"
+                style="@style/text"
+                android:text="券别信息"
+                />
+
+            <CheckBox
+                android:id="@+id/three3"
+                android:layout_below="@id/two2"
+                style="@style/text"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:checked="true"
+                android:layout_alignLeft="@id/one1"
+                android:layout_height="wrap_content"
+                android:text="机构信息" />
+        </RelativeLayout>
+
+    </LinearLayout>
+

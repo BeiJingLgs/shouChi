@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <cfcc.com.shouChi.utlis.MyToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_height="170pt"
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:background="@color/backgroundColor">
+    </cfcc.com.shouChi.utlis.MyToolbar>
+     <View
+         android:layout_width="match_parent"
+         android:layout_height="4pt"
+         android:background="@color/EditColor"/>
+</android.support.design.widget.AppBarLayout>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/actionbar"></include>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="0pt"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10pt"
+                    android:paddingRight="10pt">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/EditColor"
+                        style="@style/textSize"
+                        android:text="订单编号：" />
+                    <EditText
+                        android:id="@+id/bianhao"
+                        android:layout_width="0pt"
+                        android:layout_weight="1"
+                        style="@style/textSize"
+                        android:gravity="center_horizontal"
+                        android:textColor="@color/EditColor"
+                        android:layout_height="wrap_content"/>
+                    <Button
+                        android:id="@+id/button_select"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/EditColor"
+                        android:minHeight="0pt"
+                        style="@style/textSize"
+                        android:text="查    询" />
+                    <Button
+                        android:id="@+id/xiazai"
+                        android:minHeight="0pt"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="12pt"
+                        android:layout_height="wrap_content"
+                        style="@style/textSize"
+                        android:textColor="@color/EditColor"
+                        android:text="下载订单" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10pt"
+                    android:paddingRight="10pt"
+                    android:minHeight="0pt"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/EditColor"
+                        style="@style/textSize"
+                        android:text="生成日期：" />
+
+                    <EditText
+                        android:id="@+id/time"
+                        android:layout_width="0pt"
+                        android:layout_weight="1"
+                        style="@style/textSize"
+                        android:textColor="@color/EditColor"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content" />
+                    <Button
+                        android:id="@+id/bendi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minHeight="0pt"
+                        style="@style/textSize"
+                        android:textColor="@color/EditColor"
+                        android:text="本地订单" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </android.support.design.widget.CoordinatorLayout>
+
+
+</LinearLayout>

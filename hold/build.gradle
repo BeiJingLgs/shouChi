@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+greendao {
+    schemaVersion 8  //版本
+    daoPackage 'cfcc.com.shouChi.db' // 一般为app包名+生成文件的文件夹名
+    targetGenDir 'src/main/java' //生成文件路径
+}
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "cfcc.com.shouchi"
+        minSdkVersion 19
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    annotationProcessor 'com.jakewharton:butterknife:7.0.1'
+    implementation files('libs/okhttp-3.3.0.jar')
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:27.0.1'
+    implementation files('libs/ksoap2-android-assembly-3.5.0-jar-with-dependencies.jar')
+    implementation 'com.google.code.gson:gson:2.2.4'
+    implementation project(':rudeness-sdk')
+    implementation 'org.greenrobot:greendao:3.2.2' // add library
+    implementation 'org.greenrobot:greendao-generator:3.2.2'
+}

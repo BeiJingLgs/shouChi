@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/actionbar"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20pt">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/pack_add_textSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="券别名称 :"
+                android:textColor="@color/EditColor" />
+
+            <Spinner
+                android:id="@+id/sp_quanbie"
+                android:layout_width="0pt"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/EditColor"
+                android:minHeight="0pt" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20pt"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/pack_add_textSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="币种属性 :"
+                android:textColor="@color/EditColor" />
+
+            <Spinner
+                android:id="@+id/sp_bizhong"
+                android:layout_width="0pt"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                 />
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20pt"
+            >
+            <TextView
+                android:id="@+id/xiang_hao"
+                style="@style/pack_add_textSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="周转箱号 :"
+                android:textColor="@color/EditColor" />
+
+            <EditText
+                android:layout_alignBottom="@+id/xiang_hao"
+                android:layout_toRightOf="@+id/xiang_hao"
+                android:id="@+id/et_zhouzhuanxiang"
+                style="@style/textSize"
+                android:paddingTop="0pt"
+                android:paddingBottom="2pt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:singleLine="true"
+                android:textColor="@color/EditColor" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/bt_add"
+            style="@style/buttonStyle"
+            android:layout_gravity="center_horizontal"
+            android:text="添加订单" />
+        <View
+            style="@style/Viewline"/>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rc_box"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+</LinearLayout>

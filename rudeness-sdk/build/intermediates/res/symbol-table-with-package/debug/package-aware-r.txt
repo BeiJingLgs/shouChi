@@ -1,0 +1,1 @@
+com.bulong.rudeness_sdk

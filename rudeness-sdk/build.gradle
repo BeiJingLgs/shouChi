@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = 'bulong'
+    groupId = 'com.bulong.rudeness'
+    artifactId = 'rudeness'
+    publishVersion = '0.1.4'
+    repoName = 'maven'
+    desc = 'https://github.com/Firedamp/Rudeness'
+    website = 'https://github.com/Firedamp/Rudeness'
+}
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+}

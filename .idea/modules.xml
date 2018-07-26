@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo2/demo2.iml" filepath="$PROJECT_DIR$/demo2/demo2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hold/hold.iml" filepath="$PROJECT_DIR$/hold/hold.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mvpApp/mvpApp.iml" filepath="$PROJECT_DIR$/mvpApp/mvpApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mysqlite/mysqlite.iml" filepath="$PROJECT_DIR$/mysqlite/mysqlite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rudeness-sdk/rudeness-sdk.iml" filepath="$PROJECT_DIR$/rudeness-sdk/rudeness-sdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shouChi.iml" filepath="$PROJECT_DIR$/shouChi.iml" />
+    </modules>
+  </component>
+</project>

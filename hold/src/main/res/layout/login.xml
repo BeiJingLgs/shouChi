@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    >
+    <include  layout="@layout/actionbar">
+    </include>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="50dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/text"
+            android:layout_width="wrap_content"
+            android:textColor="@color/colorBlue"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:text="封箱人信息" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/imgStyle"
+                android:src="@drawable/username"
+                 />
+
+            <EditText
+                android:id="@+id/user_one"
+                android:hint="请输入封箱人账号(必填)"
+                android:background="@null"
+                style="@style/editText"></EditText>
+        </LinearLayout>
+        <View
+             style="@style/Viewline"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/imgStyle"
+                android:src="@drawable/password"
+                />
+            <EditText
+                android:id="@+id/pass1"
+                style="@style/editText"
+                android:background="@null"
+                android:hint="请输入封箱人密码(必填)"
+                android:password="true"></EditText>
+        </LinearLayout>
+        <View
+            style="@style/Viewline"/>
+        <TextView
+            style="@style/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="24sp"
+            android:textColor="@color/colorBlue"
+            android:text="复核人信息" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/imgStyle"
+                android:src="@drawable/username"
+                />
+
+            <EditText
+                android:id="@+id/user2"
+                android:hint="请输入复核人账号(必填)"
+                android:background="@null"
+                style="@style/editText"
+                ></EditText>
+        </LinearLayout>
+        <View
+            style="@style/Viewline"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/imgStyle"
+                android:src="@drawable/password"
+                />
+
+            <EditText
+                android:id="@+id/pass2"
+                style="@style/editText"
+                android:hint="请输入复核人密码(必填)"
+                android:background="@null"
+                android:password="true"></EditText>
+        </LinearLayout>
+        <View
+            style="@style/Viewline"/>
+        <TextView
+            style="@style/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colorBlue"
+            android:text="登录信息" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/imgStyle"
+                android:src="@drawable/time"
+                />
+
+            <EditText
+                android:id="@+id/date"
+                style="@style/editText"
+                android:background="@null"
+                android:hint="请输入时间">
+
+            </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/DW_login"
+                style="@style/buttonStyle"
+                android:text="断网登陆" />
+
+            <Button
+                android:id="@+id/LW_Login"
+                style="@style/buttonStyle"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="联网登陆" />
+
+            <Button
+                android:id="@+id/logout"
+                style="@style/buttonStyle"
+                android:text="退出" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

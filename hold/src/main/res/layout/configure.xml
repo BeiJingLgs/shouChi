@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+     >
+    <include  layout="@layout/actionbar"></include>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0pt"
+        android:padding="60pt"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40pt"
+            android:layout_marginLeft="20pt"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/text"
+                android:text="服务器IP:" />
+
+            <EditText
+                android:id="@+id/ip"
+                android:hint="请输入服务器IP(必填)"
+                android:background="@null"
+                style="@style/editText"></EditText>
+        </LinearLayout>
+        <View
+            style="@style/Viewline"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20pt"
+            android:layout_marginTop="40pt"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/text"
+                android:text="服务器端口:" />
+
+            <EditText
+                android:id="@+id/duanko"
+                android:hint="请输入服务器端口(必填)"
+                android:background="@null"
+                style="@style/editText"></EditText>
+        </LinearLayout>
+        <View
+            style="@style/Viewline"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20pt"
+            android:layout_marginTop="40pt"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/text"
+                android:text="应用代码:" />
+
+            <EditText
+                android:id="@+id/dma"
+                android:hint="请输入应用代码(必填)"
+                android:background="@null"
+                style="@style/editText"></EditText>
+        </LinearLayout>
+        <View
+            style="@style/Viewline"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40pt"
+            android:layout_marginLeft="20pt"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/text"
+                android:text="机构号码:" />
+
+            <EditText
+                android:id="@+id/num"
+                android:hint="请输入机构号码(必填)"
+                android:background="@null"
+                style="@style/editText"></EditText>
+        </LinearLayout>
+        <View
+            style="@style/Viewline"/>
+
+            <Button
+                android:id="@+id/ok"
+                android:textSize="55pt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="110pt"
+                android:paddingRight="110pt"
+                android:paddingTop="20pt"
+                android:paddingBottom="20pt"
+                android:layout_marginTop="80pt"
+                android:background="@drawable/buttncolor"
+                android:textColor="@color/colorWhite"
+                android:layout_gravity="center_horizontal"
+                android:text="确认" />
+        </LinearLayout>
+
+
+</LinearLayout>

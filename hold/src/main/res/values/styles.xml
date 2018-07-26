@@ -1,0 +1,104 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="服务器IP:" />-->
+
+    <!--<EditText-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="20dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="@drawable/edit_background" />-->
+    <!--</LinearLayout>-->
+    <style name="editText" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:layout_width">0pt</item>
+        <item name="android:layout_height">80pt</item>
+        <item name="android:textSize">60pt</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginLeft">20pt</item>
+        <item name="android:textColor">@color/EditColor</item>
+    </style>
+
+
+    <style name="imgStyle">
+        <item name="android:layout_width">68pt</item>
+        <item name="android:layout_height">68pt</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">20pt</item>
+        <item name="android:layout_marginRight">30pt</item>
+    </style>
+    <style name="textSize">
+        <item name="android:textSize">50pt</item>
+        <item name="android:textColor">@color/EditColor</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+    <style name="pack_add_textSize">
+        <item name="android:textSize">60pt</item>
+    </style>
+    <style name="ButtonStyle"  parent="@style/pack_add_textSize">
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:background">@drawable/buttncolor</item>
+    </style>
+    <style name="text">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/EditColor</item>
+    </style>
+    <!--横线-->
+    <style name="Viewline">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">4pt</item>
+        <item name="android:background">@drawable/edit_line</item>
+        <item name="android:layout_margin">10pt</item>
+    </style>
+
+
+    <style name="firstPageButton">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+    <!--封箱人、复核人、登陆的信息-->
+    <style name="loginMessage">
+        <item name="android:textSize">55pt</item>
+        <item name="android:textColor">@color/EditColor</item>
+    </style>
+    <!--button样式-->
+    <style name="buttonStyle">
+        <item name="android:textSize">55pt</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">40pt</item>
+        <item name="android:padding">16pt</item>
+        <item name="android:minHeight">0pt</item>
+        <item name="android:background">@drawable/buttncolor</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+    <!--悬浮框的样式-->
+    <style name="MyDialogTopRight" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!--<item name="android:windowBackground">@color/dialogColor</item>-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/Anim_scale</item>
+    </style>
+
+    <style name="Anim_scale" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/scale_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/scale_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/scale_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/scale_out</item>
+    </style>
+</resources>
