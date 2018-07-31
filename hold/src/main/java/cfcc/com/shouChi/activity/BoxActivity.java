@@ -102,10 +102,14 @@ public class BoxActivity extends MvpBaseActivity {
          */
         SpinnerAdapter();
         btAdd.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 String trim2 = etZhouzhuanxiang.getText().toString().trim();
+                if (scashclassname.equals("- - 未选择 - -")) {
+                    Toast.makeText(BoxActivity.this, "请选择券别", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 if (trim2.equals("")) {
                     Toast.makeText(BoxActivity.this, "周转箱编号不为空", Toast.LENGTH_LONG).show();
                     return;
@@ -128,6 +132,7 @@ public class BoxActivity extends MvpBaseActivity {
 
         });
     }
+
     private void isDbItemChongfu() {
         List<BaoCun> list = baoCunDao.queryBuilder().where(BaoCunDao.Properties.Sorderno.eq(sorderno)).list();
         int size = list.size();
@@ -140,6 +145,7 @@ public class BoxActivity extends MvpBaseActivity {
             }
         }
     }
+
     private void isItemChongfu() {
         if (elist != null) {
             for (BaoCun bc : elist) {
@@ -158,6 +164,7 @@ public class BoxActivity extends MvpBaseActivity {
             }
         }
     }
+
     private void initAdapter() {
         if (elist == null) {
             elist = new ArrayList<>();
@@ -196,6 +203,7 @@ public class BoxActivity extends MvpBaseActivity {
 
     private void SpinnerAdapter() {
         final List<String> ilist = new ArrayList<>();
+        ilist.add("- - 未选择 - -");
         final List<QuanBie> DB_list = quanBieDao.queryBuilder().list();
         for (int i = 0; i < DB_list.size(); i++) {
             QuanBie bie = DB_list.get(i);
@@ -242,6 +250,7 @@ public class BoxActivity extends MvpBaseActivity {
             }
         });
     }
+
     /**
      * 配置Toolbar
      */
@@ -282,7 +291,7 @@ public class BoxActivity extends MvpBaseActivity {
                                     rcBox.setAdapter(adapter);
                                 } else {
                                     baoCunDao.insertInTx(alist);
-                                    MyUtlis.setToast(BoxActivity.this, "您上传了"+alist.size()+"箱");
+                                    MyUtlis.setToast(BoxActivity.this, "您上传了" + alist.size() + "箱");
                                     alist.clear();
                                     adapter = new BoxRecyclerAdapter(BoxActivity.this, alist);
                                     rcBox.setAdapter(adapter);

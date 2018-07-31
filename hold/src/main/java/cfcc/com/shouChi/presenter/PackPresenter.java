@@ -357,6 +357,7 @@ public class PackPresenter extends Basepresenter<PackView> {
                          * Msmly这个方法没什么卵用
                          *  Msmly(checkBox1, checkBox2);
                          */
+                        qbDao.deleteAll();
                         //券别信息
                         getCashClassList();
                         //机构信息
