@@ -166,7 +166,7 @@ public class ListActivity extends MvpBaseActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    MyUtlis.setToast(ListActivity.this, "保存成功");
+                                    MyUtlis.setToast(ListActivity.this, "上传成功");
                                     cunDao.queryBuilder().where(BaoCunDao.Properties.Sorderno.eq(sorderno)).buildDelete().executeDeleteWithoutDetachingEntities();
                                 }
                             });

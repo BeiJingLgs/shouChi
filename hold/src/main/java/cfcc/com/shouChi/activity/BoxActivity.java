@@ -53,7 +53,7 @@ public class BoxActivity extends MvpBaseActivity {
     Button btAdd;
     @Bind(R.id.rc_box)
     RecyclerView rcBox;
-    private String[] city = {"未清分的流通钞票", "未复点残损钞票"};
+    private String[] city = {"未清分流通券", "未复点残损券"};
     private String scashclassname;
     private String sorderkind;
     private List<BaoCun> elist;
@@ -61,9 +61,6 @@ public class BoxActivity extends MvpBaseActivity {
     private String scashclasscode;
     //币种属性
     private String bzsx;
-    private String login_yydm;
-    private String login_jghm;
-    private String login_duankou;
     private String ip;
     private QuanBieDao quanBieDao;
     private BaoCunDao baoCunDao;
@@ -105,6 +102,7 @@ public class BoxActivity extends MvpBaseActivity {
             @Override
             public void onClick(View view) {
                 String trim2 = etZhouzhuanxiang.getText().toString().trim();
+
                 if (scashclassname.equals("- - 未选择 - -")) {
                     Toast.makeText(BoxActivity.this, "请选择券别", Toast.LENGTH_LONG).show();
                     return;
@@ -115,6 +113,10 @@ public class BoxActivity extends MvpBaseActivity {
                     return;
                 } else {
                     sbinlogicalid = trim2.substring(1);
+                }
+                if(sbinlogicalid.length()!=18){
+                    Toast.makeText(BoxActivity.this, "周转箱编号必须为18位", Toast.LENGTH_LONG).show();
+                    return;
                 }
                 /**
                  *查询本地库，判断是否已经有该周转箱号
@@ -140,7 +142,7 @@ public class BoxActivity extends MvpBaseActivity {
             BaoCun bc = list.get(i);
             sbinlog = bc.getSbinlogicalid();
             if (sbinlogicalid.equals(sbinlog)) {
-                MyUtlis.setToast(BoxActivity.this, "本地库中有该箱子编号");
+                MyUtlis.setToast(BoxActivity.this, "本地库中有同箱子编号");
                 sbinlogicalid = "";
             }
         }
@@ -150,7 +152,7 @@ public class BoxActivity extends MvpBaseActivity {
         if (elist != null) {
             for (BaoCun bc : elist) {
                 if (sbinlogicalid.equals(bc.getSbinlogicalid())) {
-                    MyUtlis.setToast(BoxActivity.this, "刚刚已经添加过了");
+                    MyUtlis.setToast(BoxActivity.this, "列表中有同箱子编号");
                     sbinlogicalid = "";
                 }
             }
@@ -158,7 +160,7 @@ public class BoxActivity extends MvpBaseActivity {
         if (alist != null) {
             for (BaoCun bc : alist) {
                 if (sbinlogicalid.equals(bc.getSbinlogicalid())) {
-                    MyUtlis.setToast(BoxActivity.this, "刚刚已经添加过了");
+                    MyUtlis.setToast(BoxActivity.this, "列表中有同箱子编号");
                     sbinlogicalid = "";
                 }
             }
