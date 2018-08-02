@@ -1,10 +1,7 @@
 package cfcc.com.shouChi.activity;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,7 +14,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.Bind;
 import cfcc.com.shouChi.Myappcation;
 import cfcc.com.shouChi.R;
