@@ -1,5 +1,4 @@
 package cfcc.com.shouChi.activity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,11 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import butterknife.Bind;
 import cfcc.com.shouChi.Myappcation;
 import cfcc.com.shouChi.R;
@@ -23,7 +19,6 @@ import cfcc.com.shouChi.presenter.PackPresenter;
 import cfcc.com.shouChi.utlis.DbManager;
 import cfcc.com.shouChi.utlis.MyToolbar;
 import cfcc.com.shouChi.view.PackView;
-
 import static cfcc.com.shouChi.utlis.DBase.initializeInstance;
 
 /**

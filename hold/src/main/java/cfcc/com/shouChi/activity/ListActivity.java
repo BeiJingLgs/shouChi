@@ -1,5 +1,4 @@
 package cfcc.com.shouChi.activity;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -8,11 +7,9 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,15 +18,11 @@ import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
-
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.List;
-
 import butterknife.Bind;
 import cfcc.com.shouChi.Myappcation;
 import cfcc.com.shouChi.R;
-import cfcc.com.shouChi.adapter.BoxRecyclerAdapter;
 import cfcc.com.shouChi.base.Basepresenter;
 import cfcc.com.shouChi.base.MvpBaseActivity;
 import cfcc.com.shouChi.db.BaoCun;
@@ -37,7 +30,6 @@ import cfcc.com.shouChi.db.BaoCunDao;
 import cfcc.com.shouChi.url.Path;
 import cfcc.com.shouChi.utlis.MyToolbar;
 import cfcc.com.shouChi.utlis.MyUtlis;
-import cfcc.com.shouChi.utlis.SpUtlis;
 
 /**
  * 添加列表
@@ -123,7 +115,7 @@ public class ListActivity extends MvpBaseActivity {
 
     private void pushInternet() {
         if (mList.size() == 0) {
-            MyUtlis.setToast(ListActivity.this, "本地库中没有箱子，请去添加！");
+            MyUtlis.showToast(ListActivity.this, "本地库中没有周转箱!");
         } else {
             getJson(mList);
             new Thread() {
@@ -166,7 +158,7 @@ public class ListActivity extends MvpBaseActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    MyUtlis.setToast(ListActivity.this, "上传成功");
+                                    MyUtlis.showToast(ListActivity.this, "上传成功");
                                     cunDao.queryBuilder().where(BaoCunDao.Properties.Sorderno.eq(sorderno)).buildDelete().executeDeleteWithoutDetachingEntities();
                                 }
                             });

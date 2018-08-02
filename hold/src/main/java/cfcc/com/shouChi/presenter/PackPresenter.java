@@ -18,7 +18,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,11 +26,9 @@ import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import cfcc.com.shouChi.R;
 import cfcc.com.shouChi.activity.ListActivity;
 import cfcc.com.shouChi.activity.LoginActivity;
@@ -39,7 +36,6 @@ import cfcc.com.shouChi.adapter.RecyclerAdapter;
 import cfcc.com.shouChi.api.RecyclerViewClick;
 import cfcc.com.shouChi.api.RecyclerViewLongClick;
 import cfcc.com.shouChi.base.Basepresenter;
-import cfcc.com.shouChi.bean.User;
 import cfcc.com.shouChi.db.DaoSession;
 import cfcc.com.shouChi.database.MySqLiteHelper;
 import cfcc.com.shouChi.db.DingDan;
@@ -54,7 +50,6 @@ import cfcc.com.shouChi.utlis.DBase;
 import cfcc.com.shouChi.utlis.DividerItemDecoration;
 import cfcc.com.shouChi.utlis.MyToolbar;
 import cfcc.com.shouChi.utlis.MyUtlis;
-import cfcc.com.shouChi.utlis.SpUtlis;
 import cfcc.com.shouChi.view.PackView;
 
 /**
@@ -90,6 +85,7 @@ public class PackPresenter extends Basepresenter<PackView> {
     private QuanBieDao qbDao;
     private DingDanDao dingDanDao;
     private List<DingDan> dList;
+    private Boolean isChecked = false;
 
     public PackPresenter(Context context) {
         this.context = context;
@@ -146,6 +142,7 @@ public class PackPresenter extends Basepresenter<PackView> {
         mDownLoad = view.getDownLoadButton();
         helper = view.getHelper();
     }
+
     private void NextActivity(List list, int position) {
         DingDan o = (DingDan) list.get(position);
         Intent intent = new Intent(context, ListActivity.class);
@@ -155,14 +152,15 @@ public class PackPresenter extends Basepresenter<PackView> {
         String mingcheng = o.getMingcheng();
         String sorderno = o.getSorderno();
         String sorderbank = o.getSorderbank();
-        intent.putExtra("dprocessdate",dprocessdate);
-        intent.putExtra("excutedate",excutedate);
-        intent.putExtra("ftotalsum",ftotalsum);
-        intent.putExtra("mingcheng",mingcheng);
-        intent.putExtra("sorderno",sorderno);
-        intent.putExtra("sorderbank",sorderbank);
+        intent.putExtra("dprocessdate", dprocessdate);
+        intent.putExtra("excutedate", excutedate);
+        intent.putExtra("ftotalsum", ftotalsum);
+        intent.putExtra("mingcheng", mingcheng);
+        intent.putExtra("sorderno", sorderno);
+        intent.putExtra("sorderbank", sorderbank);
         context.startActivity(intent);
     }
+
     /**
      * 下载订单
      */
@@ -170,23 +168,42 @@ public class PackPresenter extends Basepresenter<PackView> {
         mDownLoad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mlist==null){
-                    MyUtlis.setToast(context, "请先查询!");
-                }else{
-                    List<DingDan> tList=new ArrayList<>();
-                    DingDan idan = mlist.get(PackPresenter.this.mPosition);
-                    String sorderno = idan.getSorderno();
-                    List<DingDan> list = dingDanDao.queryBuilder().where(DingDanDao.Properties.Sorderno.eq(sorderno)).list();
-                    if (list.size()!=0){
-                        MyUtlis.setToast(context, "该条订单已经下载过了");
-                    }else{
-                        tList.add(idan);
-                        dingDanDao.insertInTx(tList);
-                        mlist.clear();
-                        setAdapter(mlist);
-                        MyUtlis.setToast(context, "下载成功");
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("提示信息")
+                        .setIcon(R.mipmap.ic_launcher)
+                        .setMessage("是否下载订单?")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (mlist == null) {
+                                    MyUtlis.showToast(context, "请先查询!");
+                                } else {
+                                    if (mlist.size() == 0) {
+                                        MyUtlis.showToast(context, "请先查询!");
+                                    }else{
+                                        List<DingDan> tList = new ArrayList<>();
+                                        DingDan idan = mlist.get(PackPresenter.this.mPosition);
+                                        String sorderno = idan.getSorderno();
+                                        List<DingDan> list = dingDanDao.queryBuilder().where(DingDanDao.Properties.Sorderno.eq(sorderno)).list();
+                                        if (list.size() != 0) {
+                                            dingDanDao.queryBuilder().where(DingDanDao.Properties.Sorderno.eq(sorderno)).buildDelete().executeDeleteWithoutDetachingEntities();
+                                        }
+                                            tList.add(idan);
+                                            dingDanDao.insertInTx(tList);
+                                            mlist.clear();
+                                            setAdapter(mlist);
+                                            MyUtlis.showToast(context, "下载成功");
+                                    }
+                                }
+                            }
+                        }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
                     }
-                }
+                });
+                builder.create().show();
+
+
             }
         });
     }
@@ -199,7 +216,7 @@ public class PackPresenter extends Basepresenter<PackView> {
             @Override
             public void onClick(View view) {
                 dList = new ArrayList<>();
-                 final List<DingDan> list = dingDanDao.queryBuilder().list();
+                final List<DingDan> list = dingDanDao.queryBuilder().list();
                 int size = list.size();
                 dList.addAll(list);
                 setAdapter(list);
@@ -219,8 +236,9 @@ public class PackPresenter extends Basepresenter<PackView> {
                         DingDan dingDan = dList.get(position);
                         dingDanDao.queryBuilder().where(DingDanDao.Properties.Sorderno.eq(dingDan.getSorderno())).buildDelete().executeDeleteWithoutDetachingEntities();
                         List<DingDan> list = dingDanDao.queryBuilder().list();
-                        int size1 = list.size();
                         adapter.notifyDataSetChanged();
+                        int i = position + 1;
+                        MyUtlis.showToast(context,"第"+i+"条删除成功");
                     }
                 });
             }
@@ -286,7 +304,7 @@ public class PackPresenter extends Basepresenter<PackView> {
                                  */
                                 List<Info> list = mInfoDao.queryBuilder().where(InfoDao.Properties.Sbankcode.eq(sbankcode)).list();
                                 String sbankname = list.get(0).getSbankname();
-                                DingDan dan = new DingDan(sorderno, sbankname, dprocessdate, ftotalsum, excutedate,sbankcode);
+                                DingDan dan = new DingDan(sorderno, sbankname, dprocessdate, ftotalsum, excutedate, sbankcode);
                                 mlist.add(dan);
                             }
                             /**
@@ -299,7 +317,20 @@ public class PackPresenter extends Basepresenter<PackView> {
                                     adapter.setItemRecyclerViewClick(new RecyclerViewClick() {
                                         @Override
                                         public void ItemClick(View view, int position) {
+                                            if (isChecked == false) {
+                                                view.setBackgroundColor(context.getResources().getColor(R.color.dialogColor));
+                                                isChecked = true;
+                                            } else if (isChecked == true) {
+                                                view.setBackgroundColor(context.getResources().getColor(R.color.colorWhite));
+                                                isChecked = false;
+                                            }
                                             mPosition = position;
+                                        }
+                                    });
+                                    adapter.setLongRecyclerViewClick(new RecyclerViewLongClick() {
+                                        @Override
+                                        public void ItemLongClick(View view, int position) {
+                                            return;
                                         }
                                     });
                                 }
@@ -403,13 +434,13 @@ public class PackPresenter extends Basepresenter<PackView> {
                             handler.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    MyUtlis.setToast(context, "同步成功");
+                                    MyUtlis.showToast(context, "同步成功");
                                 }
                             });
                         }
                         mInfoDao.insertInTx(mList);
                     } else {
-                        MyUtlis.setToast(context, "同步失败");
+                        MyUtlis.showToast(context, "同步失败");
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -452,7 +483,7 @@ public class PackPresenter extends Basepresenter<PackView> {
                         qbDao.insertInTx(sList);
                         Log.i("tag", s);
                     } else {
-                        MyUtlis.setToast(context, "券别信息返回值为空");
+                        MyUtlis.showToast(context, "券别信息返回值为空");
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -508,12 +539,8 @@ public class PackPresenter extends Basepresenter<PackView> {
                         db.endTransaction();
                         //关闭替换为
                         DBase.getInstance().closeDatabase();
-
-
-//                                        db.close();
-                        Log.i("tag", s);
                     } else {
-                        MyUtlis.setToast(context, "复核人信息返回值为空");
+                        MyUtlis.showToast(context, "复核人信息返回值为空");
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -548,7 +575,7 @@ public class PackPresenter extends Basepresenter<PackView> {
                         String s = envelopeResponse.toString();
                         Log.i("tag", s);
                     } else {
-                        MyUtlis.setToast(context, "周转箱信息返回值为空");
+                        MyUtlis.showToast(context, "周转箱信息返回值为空");
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

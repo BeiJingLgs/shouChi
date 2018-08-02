@@ -15,8 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +32,6 @@ import cfcc.com.shouChi.db.QuanBieDao;
 import cfcc.com.shouChi.utlis.DividerItemDecoration;
 import cfcc.com.shouChi.utlis.MyToolbar;
 import cfcc.com.shouChi.utlis.MyUtlis;
-import cfcc.com.shouChi.utlis.SpUtlis;
 
 /**
  * Created by acer on 2018/1/12.
@@ -64,7 +61,6 @@ public class BoxActivity extends MvpBaseActivity {
     private String ip;
     private QuanBieDao quanBieDao;
     private BaoCunDao baoCunDao;
-    private String zhouzhuanxiangbianhao;
     private String sorderno;
     private String sbinlog;
     private String sbinlogicalid;
@@ -104,18 +100,18 @@ public class BoxActivity extends MvpBaseActivity {
                 String trim2 = etZhouzhuanxiang.getText().toString().trim();
 
                 if (scashclassname.equals("- - 未选择 - -")) {
-                    Toast.makeText(BoxActivity.this, "请选择券别", Toast.LENGTH_LONG).show();
+                    MyUtlis.showToast(BoxActivity.this, "请选择券别");
                     return;
                 }
 
                 if (trim2.equals("")) {
-                    Toast.makeText(BoxActivity.this, "周转箱编号不为空", Toast.LENGTH_LONG).show();
+                    MyUtlis.showToast(BoxActivity.this, "周转箱编号不为空");
                     return;
                 } else {
                     sbinlogicalid = trim2.substring(1);
                 }
                 if(sbinlogicalid.length()!=18){
-                    Toast.makeText(BoxActivity.this, "周转箱编号必须为18位", Toast.LENGTH_LONG).show();
+                    MyUtlis.showToast(BoxActivity.this, "周转箱编号必须为18位");
                     return;
                 }
                 /**
@@ -142,7 +138,7 @@ public class BoxActivity extends MvpBaseActivity {
             BaoCun bc = list.get(i);
             sbinlog = bc.getSbinlogicalid();
             if (sbinlogicalid.equals(sbinlog)) {
-                MyUtlis.setToast(BoxActivity.this, "本地库中有同箱子编号");
+                MyUtlis.showToast(BoxActivity.this, "本地库中相同的周转箱编号");
                 sbinlogicalid = "";
             }
         }
@@ -152,7 +148,7 @@ public class BoxActivity extends MvpBaseActivity {
         if (elist != null) {
             for (BaoCun bc : elist) {
                 if (sbinlogicalid.equals(bc.getSbinlogicalid())) {
-                    MyUtlis.setToast(BoxActivity.this, "列表中有同箱子编号");
+                    MyUtlis.showToast(BoxActivity.this, "列表中有相同周转箱编号");
                     sbinlogicalid = "";
                 }
             }
@@ -160,7 +156,7 @@ public class BoxActivity extends MvpBaseActivity {
         if (alist != null) {
             for (BaoCun bc : alist) {
                 if (sbinlogicalid.equals(bc.getSbinlogicalid())) {
-                    MyUtlis.setToast(BoxActivity.this, "列表中有同箱子编号");
+                    MyUtlis.showToast(BoxActivity.this, "列表中有相同周转箱编号");
                     sbinlogicalid = "";
                 }
             }
@@ -195,6 +191,8 @@ public class BoxActivity extends MvpBaseActivity {
                     alist.remove(position);
                 }
                 adapter.notifyDataSetChanged();
+                int i = position + 1;
+                MyUtlis.showToast(BoxActivity.this,"第"+i+"条删除成功");
             }
         });
     }
@@ -284,16 +282,16 @@ public class BoxActivity extends MvpBaseActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 if (elist == null) {
-                                    MyUtlis.setToast(BoxActivity.this, "请先添加箱子");
+                                    MyUtlis.showToast(BoxActivity.this, "请先添加周转箱");
                                 } else if (elist.size() == 1) {
                                     baoCunDao.insertInTx(elist);
-                                    MyUtlis.setToast(BoxActivity.this, "您上传了1箱");
+                                    MyUtlis.showToast(BoxActivity.this, "成功上传1箱");
                                     elist.clear();
                                     adapter = new BoxRecyclerAdapter(BoxActivity.this, elist);
                                     rcBox.setAdapter(adapter);
                                 } else {
                                     baoCunDao.insertInTx(alist);
-                                    MyUtlis.setToast(BoxActivity.this, "您上传了" + alist.size() + "箱");
+                                    MyUtlis.showToast(BoxActivity.this,  "成功上传" + alist.size() + "箱");
                                     alist.clear();
                                     adapter = new BoxRecyclerAdapter(BoxActivity.this, alist);
                                     rcBox.setAdapter(adapter);

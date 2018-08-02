@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -54,13 +55,14 @@ public class RecyclerAdapter  extends RecyclerView.Adapter<RecyclerAdapter.MyVie
         return mList !=null?mList.size():0;
     }
     class   MyViewHodler  extends RecyclerView.ViewHolder{
-        TextView  ddbh,jgmc,scrq,jehj,sqrq;
+        TextView  ddbh,jgmc,scrq,sqrq;
         public MyViewHodler(View itemView) {
             super(itemView);
             ddbh=itemView.findViewById(R.id.dingdan_bianhao);
             jgmc=itemView.findViewById(R.id.jigou_mingcheng);
             scrq=itemView.findViewById(R.id.shengcheng_riqi);
             sqrq=itemView.findViewById(R.id.shenqing_riqi);
+
             /**
              * 点击当前行的时候
              */

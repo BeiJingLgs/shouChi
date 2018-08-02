@@ -1,8 +1,5 @@
 package cfcc.com.shouChi.activity;
-
-
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
@@ -10,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.ksoap2.SoapEnvelope;
@@ -19,7 +14,6 @@ import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,7 +24,6 @@ import butterknife.Bind;
 import cfcc.com.shouChi.R;
 import cfcc.com.shouChi.base.Basepresenter;
 import cfcc.com.shouChi.base.MvpBaseActivity;
-import cfcc.com.shouChi.bean.Person;
 import cfcc.com.shouChi.url.Path;
 import cfcc.com.shouChi.utlis.MyToolbar;
 import cfcc.com.shouChi.utlis.MyUtlis;
@@ -138,7 +131,7 @@ public class LoginActivity extends MvpBaseActivity {
                 getSp();
                 if (isOk == true) {
                     if ("".equals(user_1) && "".equals(user_2) && "".equals(pass_1) && "".equals(pass_2) && "".equals(time)) {
-                        Toast.makeText(LoginActivity.this, "账号密码不能为空", Toast.LENGTH_SHORT).show();
+                        MyUtlis.showToast(LoginActivity.this, "账号密码不能为空");
                     } else {
                         new Thread() {
                             @Override
@@ -175,7 +168,7 @@ public class LoginActivity extends MvpBaseActivity {
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                MyUtlis.setToast(LoginActivity.this, "登录成功");
+                                                MyUtlis.showToast(LoginActivity.this, "登录成功");
                                             }
                                         });
                                         Intent intent = new Intent(LoginActivity.this, PackingActivity.class);
@@ -185,7 +178,7 @@ public class LoginActivity extends MvpBaseActivity {
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                MyUtlis.setToast(LoginActivity.this, "登录失败");
+                                                MyUtlis.showToast(LoginActivity.this, "登录失败");
                                             }
                                         });
                                     }
@@ -195,7 +188,7 @@ public class LoginActivity extends MvpBaseActivity {
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            MyUtlis.setToast(LoginActivity.this, message);
+                                            MyUtlis.showToast(LoginActivity.this, message);
                                         }
                                     });
                                 } catch (XmlPullParserException e) {
@@ -208,7 +201,7 @@ public class LoginActivity extends MvpBaseActivity {
                         }.start();
                     }
                 } else {
-                    MyUtlis.setToast(LoginActivity.this, "请先进行环境配置");
+                    MyUtlis.showToast(LoginActivity.this, "请先进行环境配置");
                 }
             }
 
@@ -238,14 +231,14 @@ public class LoginActivity extends MvpBaseActivity {
                 String username2 = sp.getString("username2", "");
                 String password2 = sp.getString("password2", "");
                 if ("".equals(user_1) && "".equals(user_2) && "".equals(pass_1) && "".equals(pass_2) && "".equals(time)) {
-                    Toast.makeText(LoginActivity.this, "账号密码不能为空", Toast.LENGTH_SHORT).show();
+                    MyUtlis.showToast(LoginActivity.this, "账号密码不能为空!");
                 } else if ("".equals(user_1) || "".equals(user_2) || "".equals(pass_1) || "".equals(pass_2) || "".equals(time)) {
-                    Toast.makeText(LoginActivity.this, "请输入登陆必填项！", Toast.LENGTH_SHORT).show();
+                    MyUtlis.showToast(LoginActivity.this, "请输入登陆必填项！");
                 } else if (user_1.equals(username1) && user_2.equals(username2) && pass_1.equals(password1) && pass_2.equals(password2)) {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            MyUtlis.setToast(LoginActivity.this, "登录成功");
+                            MyUtlis.showToast(LoginActivity.this, "登录成功");
                         }
                     });
                     MyUtlis.startActivity(LoginActivity.this, PackingActivity.class);
@@ -253,7 +246,7 @@ public class LoginActivity extends MvpBaseActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            MyUtlis.setToast(LoginActivity.this, "登录失败");
+                            MyUtlis.showToast(LoginActivity.this, "登录失败");
                         }
                     });
                 }
