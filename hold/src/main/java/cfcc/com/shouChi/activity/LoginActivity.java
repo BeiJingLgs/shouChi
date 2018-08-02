@@ -91,11 +91,6 @@ public class LoginActivity extends MvpBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         toolbar.setRightButtonText("环境配置");
-//        Intent intent=getIntent();
-//        String ip=  intent.getStringExtra("ip");
-//        String duankou=  intent.getStringExtra("duankou");
-//        String daima=  intent.getStringExtra("daima");
-//        String haoma= intent.getStringExtra("haoma");
         Drawable drawable = this.getResources().getDrawable(R.drawable.wangluo);
         //非常重要，必须设置，否则图片不会显示
 //        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
