@@ -190,9 +190,6 @@ public class LoginActivity extends MvpBaseActivity {
                                     e.printStackTrace();
                                 }
                             }
-
-                            private void setValue(SoapObject soapObject) {
-                            }
                         }.start();
                     }
                 } else {

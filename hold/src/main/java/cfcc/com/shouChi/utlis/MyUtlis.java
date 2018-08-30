@@ -38,7 +38,7 @@ public class MyUtlis {
          *  如果Toast显示不正常，请把这句注释掉
          *   toastView.setBackground(conext.getDrawable(R.drawable.bg_toast));
          */
-        toastView.setBackground(conext.getDrawable(R.drawable.bg_toast));
+//        toastView.setBackground(conext.getDrawable(R.drawable.bg_toast));
         tv.setTextSize(24);
         toastView.setGravity(Gravity.CENTER);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,

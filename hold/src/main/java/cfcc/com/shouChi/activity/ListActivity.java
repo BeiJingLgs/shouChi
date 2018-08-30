@@ -77,6 +77,7 @@ public class ListActivity extends MvpBaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         cunDao = Myappcation.getInstance().getSession().getBaoCunDao();
+
         setToobar();
         getIntents();
         setXiang();
@@ -121,18 +122,25 @@ public class ListActivity extends MvpBaseActivity {
             new Thread() {
                 @Override
                 public void run() {
+                    SharedPreferences sp2 = getSharedPreferences("test", Activity.MODE_PRIVATE);
+                    String username1 = sp2.getString("username1", "");
+                    String username2 = sp2.getString("username2", "");
+
                     SharedPreferences sp1 = getSharedPreferences("a", Activity.MODE_PRIVATE);
                     Boolean isOk = sp1.getBoolean("isOk", true);
                     login_yydm = sp1.getString("daima", "");
                     login_jghm = sp1.getString("num", "");
                     login_duankou = sp1.getString("duankou", "");
                     ip = sp1.getString("ip", "");
+
                     SharedPreferences sp = getSharedPreferences("b", Activity.MODE_PRIVATE);
                     String jsessionid = sp.getString("jsessionid", "");
                     String soapAction = Path.TB_NAMESPACE + Path.UPDATEORDER;
                     SoapObject soapObject = MyUtlis.getSoapObject(Path.TB_NAMESPACE, Path.UPDATEORDER);
                     try {
                         JSONObject jsonObject = new JSONObject();
+                        jsonObject.put("slockperid", username1);
+                        jsonObject.put("smachineid", username2);
                         jsonObject.put("sorderno", sorderno);
                         jsonObject.put("dprocessdate", dprocessdate);
                         jsonObject.put("sorderbank", sorderbank);
